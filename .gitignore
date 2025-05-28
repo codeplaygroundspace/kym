@@ -9,29 +9,47 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.npm/
 
 # testing
 /coverage
+.nyc_output/
 
 # next.js
 /.next/
 /out/
+.next-version
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
 *.pem
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+logs
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
+# local env files
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+.envrc
+.secrets
 
 # vercel
 .vercel
@@ -39,3 +57,38 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - IntelliJ/Webstorm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+tsconfig.tsbuildinfo
+
+# Temporary files
+*.swp
+*.swo
+*~
+/temp
+*.tmp
+*.temp
+
+# macOS specific
+.AppleDouble
+.LSOverride
+
+# Project specific
+.turbo
+storybook-static/
