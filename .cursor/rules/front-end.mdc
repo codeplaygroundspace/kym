@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Always build for light and dark theme
+- You must use Tailwind 4 https://tailwindcss.com/
+- You must follow Components naming convention. Example: nav-bar.tsx
+- Accessibility - Proper ARIA labels, focus states, and semantic HTML
