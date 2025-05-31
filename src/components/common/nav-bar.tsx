@@ -2,17 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  TodayIcon,
-  JourneyIcon,
-  TogetherIcon,
-  WisdomIcon,
-} from "@/components/icons";
+import { LuCalendarDays, LuMessageCircleMore } from "react-icons/lu";
+import { JourneyIcon, WisdomIcon } from "@/components/icons";
 
 const navItems = {
   "/": {
     name: "Today",
-    icon: TodayIcon,
+    icon: () => <LuCalendarDays size={24} />,
   },
   "/journey": {
     name: "Journey",
@@ -20,7 +16,7 @@ const navItems = {
   },
   "/together": {
     name: "Together",
-    icon: TogetherIcon,
+    icon: () => <LuMessageCircleMore size={24} />,
   },
   "/wisdom": {
     name: "Wisdom",
@@ -48,14 +44,13 @@ export default function Navbar() {
         >
           {Object.entries(navItems).map(([path, { name, icon: Icon }]) => {
             const isActive = pathname === path;
+
             return (
               <Link
                 key={path}
                 href={path}
-                className={`flex flex-col items-center justify-center py-2 px-3 min-w-0 transition-all ${
-                  isActive
-                    ? "text-primary"
-                    : "text-menu-text hover:text-primary"
+                className={`flex flex-col items-center justify-center py-2 px-3 min-w-0 ${
+                  isActive ? "text-primary" : "text-menu-text"
                 }`}
                 tabIndex={0}
                 aria-label={`Navigate to ${name}`}
