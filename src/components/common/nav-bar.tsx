@@ -52,7 +52,7 @@ export default function Navbar() {
                 tabIndex={0}
                 aria-label={`Navigate to ${name}`}
               >
-                <div className="w-4 h-4 mb-1">
+                <div className="mb-1">
                   <Icon />
                 </div>
                 <span className="text-xs text-center font-semibold">
