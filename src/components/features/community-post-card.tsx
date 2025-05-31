@@ -36,7 +36,7 @@ const CommunityPostCard: React.FC<CommunityPostCardProps> = ({
   onLike,
 }) => {
   return (
-    <div className="bg-background rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+    <div className="bg-background rounded-2xl border border-none overflow-hidden">
       {/* Crisis Support Banner */}
       {post.isCrisis && (
         <div className="bg-red-50 dark:bg-red-900/20 border-b border-red-200 dark:border-red-800 p-3">

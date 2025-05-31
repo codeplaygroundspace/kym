@@ -69,7 +69,7 @@ const TimelinePage = () => {
           <div className="mb-8">
             <Link
               href="/journey"
-              className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors font-medium mb-4"
+              className="inline-flex items-center justify-center w-10 h-10 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors mb-4"
               tabIndex={0}
               aria-label="Go back to journey page"
             >
@@ -80,11 +80,10 @@ const TimelinePage = () => {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="mr-1"
+                className="text-text-primary"
               >
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
-              Back
             </Link>
             <h1 className="text-2xl font-bold text-text-primary">My Journey</h1>
           </div>
