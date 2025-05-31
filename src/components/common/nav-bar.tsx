@@ -31,6 +31,14 @@ const navItems = {
 export default function Navbar() {
   const pathname = usePathname();
 
+  // Only show navbar on main pages, not on sub-pages
+  const mainPages = ["/", "/journey", "/together", "/wisdom"];
+  const shouldShowNavbar = mainPages.includes(pathname);
+
+  if (!shouldShowNavbar) {
+    return null;
+  }
+
   return (
     <aside className="fixed bottom-0 left-0 right-0 bg-background border-t border-gray-200 dark:border-gray-700 z-50">
       <div className="max-w-md mx-auto">

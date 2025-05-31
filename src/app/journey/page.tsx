@@ -31,11 +31,9 @@ const JourneyPage = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <main className="pb-20">
-        <div className="container mx-auto px-4 py-8 max-w-md">
-          <h1 className="text-2xl font-bold text-center mb-8 text-text-primary">
-            Journey
-          </h1>
+      <main>
+        <div className="container mx-auto px-4 pt-10 pb-20 max-w-md">
+          <h1 className="text-2xl font-bold mb-8 text-text-primary">Journey</h1>
 
           <JourneyStats
             weeksStrong={25}
