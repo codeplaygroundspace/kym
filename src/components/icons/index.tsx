@@ -6,7 +6,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 export const TodayIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -39,7 +39,7 @@ export const TodayIcon = ({
 );
 
 export const JourneyIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -67,7 +67,7 @@ export const JourneyIcon = ({
 );
 
 export const TogetherIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -89,7 +89,7 @@ export const TogetherIcon = ({
 );
 
 export const WisdomIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -119,7 +119,7 @@ export const WisdomIcon = ({
 
 // Calendar icons from Streamline Atlas Line set
 export const CalendarIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -142,7 +142,7 @@ export const CalendarIcon = ({
 );
 
 export const CalendarDotsIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -175,7 +175,7 @@ export const CalendarDotsIcon = ({
 );
 
 export const CalendarDaysIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (
@@ -201,7 +201,7 @@ export const CalendarDaysIcon = ({
 );
 
 export const CalendarCheckIcon = ({
-  size = 24,
+  size = 28,
   className = "",
   ...props
 }: IconProps) => (

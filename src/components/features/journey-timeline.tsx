@@ -4,6 +4,7 @@ import { TimelineEntry } from "@/types/journey";
 interface JourneyTimelineProps {
   entries: TimelineEntry[];
   showViewAll?: boolean;
+  showTitle?: boolean;
 }
 
 const colorClasses = {
@@ -15,24 +16,29 @@ const colorClasses = {
 const JourneyTimeline = ({
   entries,
   showViewAll = true,
+  showTitle = true,
 }: JourneyTimelineProps) => {
   return (
     <div className="mb-8">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-text-primary">Recent Journey</h2>
-        {showViewAll && (
-          <Link
-            href="/journey/timeline"
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors"
-            tabIndex={0}
-            aria-label="View all journey entries"
-          >
-            View all
-          </Link>
-        )}
-      </div>
+      {showTitle && (
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-text-primary">
+            Recent Journey
+          </h2>
+          {showViewAll && (
+            <Link
+              href="/journey/timeline"
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors"
+              tabIndex={0}
+              aria-label="View all journey entries"
+            >
+              View all
+            </Link>
+          )}
+        </div>
+      )}
 
-      <div className="space-y-6">
+      <div className={`space-y-6 ${!showTitle ? "mt-0" : ""}`}>
         {entries.map((entry) => (
           <div key={entry.id} className="flex items-start space-x-4">
             <div className="flex flex-col items-center">

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Navbar from "@/components/common/nav-bar";
 import JourneyTimeline from "@/components/features/journey-timeline";
 
 const TimelinePage = () => {
@@ -65,26 +64,38 @@ const TimelinePage = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <main className="pb-20">
-        <div className="container mx-auto px-4 py-8 max-w-md">
-          <div className="flex items-center mb-8">
+      <main>
+        <div className="container mx-auto px-4 pt-10 pb-8 max-w-md">
+          <div className="mb-8">
             <Link
               href="/journey"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mr-4 transition-colors"
+              className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors font-medium mb-4"
               tabIndex={0}
               aria-label="Go back to journey page"
             >
-              ← Back
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="mr-1"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Back
             </Link>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              Full Timeline
-            </h1>
+            <h1 className="text-2xl font-bold text-text-primary">My Journey</h1>
           </div>
 
-          <JourneyTimeline entries={allTimelineEntries} showViewAll={false} />
+          <JourneyTimeline
+            entries={allTimelineEntries}
+            showViewAll={false}
+            showTitle={false}
+          />
         </div>
       </main>
-      <Navbar />
     </div>
   );
 };
