@@ -1,5 +1,7 @@
+import { useMemo } from "react";
+
 const DateHeader = () => {
-  const getCurrentDate = () => {
+  const currentDate = useMemo(() => {
     const now = new Date();
     const options: Intl.DateTimeFormatOptions = {
       weekday: "long",
@@ -7,22 +9,34 @@ const DateHeader = () => {
       month: "long",
     };
 
-    const formatted = now.toLocaleDateString("en-US", options);
-    // Add ordinal suffix to day
     const day = now.getDate();
-    const suffix =
-      day === 1 || day === 21 || day === 31
-        ? "st"
-        : day === 2 || day === 22
-        ? "nd"
-        : day === 3 || day === 23
-        ? "rd"
-        : "th";
+    const getOrdinalSuffix = (day: number): string => {
+      if (day > 3 && day < 21) return "th";
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    };
 
-    return formatted.replace(/\d+/, `${day}${suffix}`);
-  };
+    const formatted = now.toLocaleDateString("en-GB", options);
+    return formatted.replace(/\d+/, `${day}${getOrdinalSuffix(day)}`);
+  }, []);
 
-  return <p className="text-xs text-menu-text mb-2">{getCurrentDate()}</p>;
+  return (
+    <p
+      className="text-xs text-menu-text mb-2"
+      role="banner"
+      aria-label="Current date"
+    >
+      {currentDate}
+    </p>
+  );
 };
 
 export default DateHeader;

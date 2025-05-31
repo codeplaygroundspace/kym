@@ -1,12 +1,12 @@
+import { useMemo } from "react";
+import { getRandomQuote } from "@/data/quotes";
+
 const DailyQuote = () => {
-  // TODO: Replace with dynamic quote system in the future
-  const quote = {
-    text: "You are not alone in this journey. Every feeling is valid, every day is progress.",
-    attribution: "From mothers who understand",
-  };
+  // Get a random quote that stays consistent for this component instance
+  const quote = useMemo(() => getRandomQuote(), []);
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 rounded-t-lg pt-6 px-6 pb-[var(--navbar-clearance-height)] text-center">
+    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg pt-6 px-6 pb-6 text-center mt-8">
       <blockquote className="text-foreground font-medium mb-4 leading-relaxed">
         &ldquo;{quote.text}&rdquo;
       </blockquote>

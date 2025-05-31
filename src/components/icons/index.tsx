@@ -6,7 +6,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 export const TodayIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -22,19 +22,24 @@ export const TodayIcon = ({
     className={className}
     {...props}
   >
-    <path d="M5.69375 3.175c0 1.4937500000000001 -2.38125 3.75 -2.38125 3.75s-2.3874999999999997 -2.2375 -2.3874999999999997 -3.75A2.3125 2.3125 0 0 1 3.3125 0.9375a2.3125 2.3125 0 0 1 2.38125 2.2375Z" />
-    <path
-      d="M2.71875 3.325a0.59375 0.59375 0 1 0 1.1875 0 0.59375 0.59375 0 1 0 -1.1875 0"
-      fill="currentColor"
-    />
-    <path d="M2.7125 8.125h2.6875A1.4937500000000001 1.4937500000000001 0 0 1 6.875 9.5875a1.4937500000000001 1.4937500000000001 0 0 1 -1.4874999999999998 1.4937500000000001H2.4125a1.4937500000000001 1.4937500000000001 0 0 0 -1.4874999999999998 1.4874999999999998 1.4937500000000001 1.4937500000000001 0 0 0 1.4874999999999998 1.4937500000000001H11.0625" />
-    <path d="m10.46875 5.7125 0 7.15625" />
-    <path d="m10.46875 9.2875 2.9812499999999997 0 -0.59375 -1.1875 0.59375 -1.2 -2.9812499999999997 0 0 2.3874999999999997z" />
+    <path d="M0.925 2.10625h13.149999999999999v2.9875000000000003H0.925Z" />
+    <path d="M0.925 5.09375h13.149999999999999V14.0625H0.925Z" />
+    <path d="m3.3125 8.08125 1.2 0" />
+    <path d="m5.706250000000001 8.08125 1.1937499999999999 0" />
+    <path d="m8.100000000000001 8.08125 1.1937499999999999 0" />
+    <path d="m10.4875 8.08125 1.2 0" />
+    <path d="m10.4875 11.075 1.2 0" />
+    <path d="m3.3125 11.075 1.2 0" />
+    <path d="m5.706250000000001 11.075 1.1937499999999999 0" />
+    <path d="m8.100000000000001 11.075 1.1937499999999999 0" />
+    <path d="m3.9124999999999996 0.3125 0 2.9875000000000003" />
+    <path d="m7.5 0.3125 0 2.9875000000000003" />
+    <path d="m11.087499999999999 0.3125 0 2.9875000000000003" />
   </svg>
 );
 
 export const JourneyIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -62,7 +67,7 @@ export const JourneyIcon = ({
 );
 
 export const TogetherIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -84,7 +89,7 @@ export const TogetherIcon = ({
 );
 
 export const WisdomIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -114,7 +119,7 @@ export const WisdomIcon = ({
 
 // Calendar icons from Streamline Atlas Line set
 export const CalendarIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -137,7 +142,7 @@ export const CalendarIcon = ({
 );
 
 export const CalendarDotsIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -170,7 +175,7 @@ export const CalendarDotsIcon = ({
 );
 
 export const CalendarDaysIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
@@ -196,7 +201,7 @@ export const CalendarDaysIcon = ({
 );
 
 export const CalendarCheckIcon = ({
-  size = 16,
+  size = 24,
   className = "",
   ...props
 }: IconProps) => (
