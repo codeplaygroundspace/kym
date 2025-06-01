@@ -22,9 +22,6 @@ const JourneyTimeline = ({
     <div className="mb-8">
       {showTitle && (
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-text-primary">
-            Recent Journey
-          </h2>
           {showViewAll && (
             <Link
               href="/journey/timeline"

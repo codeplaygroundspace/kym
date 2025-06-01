@@ -33,6 +33,28 @@ export const JourneyIcon = ({
   </svg>
 );
 
+export const MessagesIcon = ({
+  size = 28,
+  className = "",
+  ...props
+}: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    height={size}
+    width={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
+
 export const WisdomIcon = ({
   size = 28,
   className = "",
@@ -169,14 +191,38 @@ export const CalendarCheckIcon = ({
   </svg>
 );
 
+export const BackIcon = ({
+  size = 24,
+  className = "",
+  ...props
+}: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    height={size}
+    width={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+);
+
 // Export all icons as a collection for easier management
 export const Icons = {
   Journey: JourneyIcon,
+  Messages: MessagesIcon,
   Wisdom: WisdomIcon,
   Calendar: CalendarIcon,
   CalendarDots: CalendarDotsIcon,
   CalendarDays: CalendarDaysIcon,
   CalendarCheck: CalendarCheckIcon,
+  Back: BackIcon,
 } as const;
 
 // Export icon names type for type safety

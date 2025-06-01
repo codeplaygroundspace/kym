@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LuCalendarDays } from "react-icons/lu";
+import { LuCalendarDays, LuMessageCircleMore } from "react-icons/lu";
 import { JourneyIcon, WisdomIcon } from "@/components/icons";
 
 const navItems = {
@@ -14,7 +14,10 @@ const navItems = {
     name: "Journey",
     icon: JourneyIcon,
   },
-
+  "/messages": {
+    name: "Messages",
+    icon: () => <LuMessageCircleMore size={24} />,
+  },
   "/wisdom": {
     name: "Wisdom",
     icon: WisdomIcon,
@@ -25,7 +28,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   // Only show navbar on main pages, not on sub-pages
-  const mainPages = ["/", "/journey", "/together", "/wisdom"];
+  const mainPages = ["/", "/journey", "/together", "/messages", "/wisdom"];
   const shouldShowNavbar = mainPages.includes(pathname);
 
   if (!shouldShowNavbar) {
