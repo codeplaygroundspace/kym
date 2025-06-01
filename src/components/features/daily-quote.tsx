@@ -7,7 +7,7 @@ const DailyQuote = () => {
 
   return (
     <div className="bg-gray-100 dark:bg-gray-800 rounded-lg pt-6 px-6 pb-6 text-center mt-8">
-      <blockquote className="text-foreground font-medium mb-4 leading-relaxed">
+      <blockquote className="text-text-primary font-medium mb-4 leading-relaxed">
         &ldquo;{quote.text}&rdquo;
       </blockquote>
       <cite className="text-menu-text text-sm not-italic">

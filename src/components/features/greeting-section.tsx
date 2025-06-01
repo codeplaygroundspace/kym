@@ -10,7 +10,7 @@ const GreetingSection = () => {
   const userName = "Fernanda";
 
   return (
-    <h1 className="text-xl font-bold text-foreground mb-6">
+    <h1 className="text-xl font-bold text-text-primary mb-6">
       {getGreeting()}, {userName}
     </h1>
   );

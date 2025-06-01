@@ -63,7 +63,7 @@ const TimelinePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-bg-primary">
       <main>
         <div className="container mx-auto px-4 pt-10 pb-8 max-w-md">
           <div className="mb-8">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LuCalendarDays, LuMessageCircleMore } from "react-icons/lu";
+import { LuCalendarDays } from "react-icons/lu";
 import { JourneyIcon, WisdomIcon } from "@/components/icons";
 
 const navItems = {
@@ -14,10 +14,7 @@ const navItems = {
     name: "Journey",
     icon: JourneyIcon,
   },
-  "/together": {
-    name: "Together",
-    icon: () => <LuMessageCircleMore size={24} />,
-  },
+
   "/wisdom": {
     name: "Wisdom",
     icon: WisdomIcon,
