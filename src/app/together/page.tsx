@@ -36,7 +36,7 @@ const TogetherPage = () => {
       : posts.filter((post) => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
+    <div className="min-h-screen bg-bg-secondary pb-20">
       {/* Header */}
       <div className="bg-background border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 max-w-md">

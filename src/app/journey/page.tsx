@@ -30,7 +30,7 @@ const JourneyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-bg-primary">
       <main>
         <div className="container mx-auto px-4 pt-10 pb-20 max-w-md">
           <h1 className="text-2xl font-bold mb-8 text-text-primary">Journey</h1>

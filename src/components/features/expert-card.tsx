@@ -22,7 +22,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({ expert, onClick }) => {
 
   return (
     <div
-      className="bg-white dark:bg-gray-800 rounded-2xl p-4 cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 border border-gray-100 dark:border-gray-700"
+      className="bg-bg-primary rounded-2xl p-4 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border border-none"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
