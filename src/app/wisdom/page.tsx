@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/common/nav-bar";
-import SearchBar from "@/components/features/search-bar";
 import ExpertCard from "@/components/features/expert-card";
 import CourseCard from "@/components/features/course-card";
 import ContentSection from "@/components/features/content-section";
@@ -23,21 +22,11 @@ const WisdomPage = () => {
     console.log("Course clicked:", course);
   };
 
-  const handleSearch = (query: string) => {
-    console.log("Search query:", query);
-    // TODO: Implement search functionality
-  };
-
   return (
     <div className="min-h-screen bg-bg-secondary">
       <main className="pb-20">
         <div className="container mx-auto px-4 pt-10 max-w-md">
           <h1 className="text-2xl font-bold text-text-primary mb-6">Wisdom</h1>
-
-          <SearchBar
-            placeholder="Pregnancy tips, birth prep, mental health..."
-            onSearch={handleSearch}
-          />
 
           {/* Expert Insights Section */}
           <div className="mb-8">

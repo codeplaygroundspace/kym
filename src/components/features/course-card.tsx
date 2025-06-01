@@ -26,7 +26,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
 
   return (
     <div
-      className="bg-bg-primary rounded-2xl overflow-hidden cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border border-none"
+      className="bg-bg-primary rounded-card-lg overflow-hidden cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border border-none"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
@@ -45,7 +45,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
         {/* Media Type Indicator */}
         <div className="absolute top-3 right-3">
           <div
-            className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium ${
+            className={`flex items-center gap-1 px-2 py-1 rounded-card-sm text-xs font-medium ${
               course.type === "video"
                 ? "bg-purple-500/80 text-white"
                 : "bg-pink-500/80 text-white"

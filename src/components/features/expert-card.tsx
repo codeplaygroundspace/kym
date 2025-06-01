@@ -22,7 +22,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({ expert, onClick }) => {
 
   return (
     <div
-      className="bg-bg-primary rounded-2xl p-4 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border border-none"
+      className="bg-bg-primary rounded-card-lg p-4 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 border border-none"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
@@ -30,7 +30,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({ expert, onClick }) => {
       aria-label={`View ${expert.name}'s profile`}
     >
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-700 flex-shrink-0">
+        <div className="w-12 h-12 rounded-card-md overflow-hidden bg-gray-100 dark:bg-gray-700 flex-shrink-0">
           <Image
             src={expert.avatar}
             alt={expert.name}
