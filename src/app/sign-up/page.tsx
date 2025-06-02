@@ -1,6 +1,7 @@
 "use client";
 
 import AuthForm from "@/components/features/auth-form";
+import PrivacyBanner from "@/components/common/privacy-banner";
 
 const SignUpPage = () => {
   const handleBackClick = () => {
@@ -28,13 +29,18 @@ const SignUpPage = () => {
   };
 
   return (
-    <AuthForm
-      mode="signup"
-      onBackClick={handleBackClick}
-      onGoogleAuth={handleGoogleSignUp}
-      onAppleAuth={handleAppleSignUp}
-      onSubmit={handleSignUp}
-    />
+    <div className="min-h-screen bg-gradient-purple flex flex-col justify-end px-0 pb-0">
+      <div className="w-full">
+        <PrivacyBanner />
+        <AuthForm
+          mode="signup"
+          onBackClick={handleBackClick}
+          onGoogleAuth={handleGoogleSignUp}
+          onAppleAuth={handleAppleSignUp}
+          onSubmit={handleSignUp}
+        />
+      </div>
+    </div>
   );
 };
 
