@@ -1,6 +1,6 @@
 "use client";
 
-import AuthForm from "@/components/features/auth-form";
+import SignupForm from "@/components/features/signup-form";
 import PrivacyBanner from "@/components/common/privacy-banner";
 
 const SignUpPage = () => {
@@ -21,7 +21,6 @@ const SignUpPage = () => {
 
   const handleSignUp = (data: {
     email: string;
-    password?: string;
     userType: "personal" | "practitioner";
   }) => {
     // Sign up logic would go here
@@ -32,8 +31,7 @@ const SignUpPage = () => {
     <div className="min-h-screen bg-gradient-purple flex flex-col justify-end px-0 pb-0">
       <div className="w-full">
         <PrivacyBanner />
-        <AuthForm
-          mode="signup"
+        <SignupForm
           onBackClick={handleBackClick}
           onGoogleAuth={handleGoogleSignUp}
           onAppleAuth={handleAppleSignUp}
