@@ -155,3 +155,8 @@ body {
 .rounded-card-2xl {
   border-radius: var(--radius-2xl);
 }
+
+.rounded-t-card-2xl {
+  border-top-left-radius: var(--radius-2xl);
+  border-top-right-radius: var(--radius-2xl);
+}
