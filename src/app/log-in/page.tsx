@@ -1,6 +1,6 @@
 "use client";
 
-import AuthForm from "@/components/features/auth-form";
+import LoginForm from "@/components/features/login-form";
 
 const LogInPage = () => {
   const handleBackClick = () => {
@@ -18,11 +18,7 @@ const LogInPage = () => {
     console.log("Log in with Apple");
   };
 
-  const handleLogIn = (data: {
-    email: string;
-    password?: string;
-    userType: "personal" | "practitioner";
-  }) => {
+  const handleLogIn = (data: { email: string; password: string }) => {
     // Log in logic would go here
     console.log("Log in with:", data);
     // Navigate to home page after login
@@ -32,8 +28,7 @@ const LogInPage = () => {
   return (
     <div className="min-h-screen bg-gradient-purple flex flex-col justify-end px-0 pb-0">
       <div className="w-full">
-        <AuthForm
-          mode="login"
+        <LoginForm
           onBackClick={handleBackClick}
           onGoogleAuth={handleGoogleLogIn}
           onAppleAuth={handleAppleLogIn}
