@@ -36,7 +36,7 @@ const BackButton: React.FC<BackButtonProps> = ({
     <button
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`flex items-center justify-center w-10 h-10 bg-bg-primary rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 ${className}`}
+      className={`flex items-center justify-center w-8 h-8 bg-bg-primary rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 ${className}`}
       tabIndex={0}
       aria-label="Go back"
     >
