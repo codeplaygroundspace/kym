@@ -30,13 +30,17 @@ const LogInPage = () => {
   };
 
   return (
-    <AuthForm
-      mode="login"
-      onBackClick={handleBackClick}
-      onGoogleAuth={handleGoogleLogIn}
-      onAppleAuth={handleAppleLogIn}
-      onSubmit={handleLogIn}
-    />
+    <div className="min-h-screen bg-gradient-purple flex flex-col justify-end px-0 pb-0">
+      <div className="w-full">
+        <AuthForm
+          mode="login"
+          onBackClick={handleBackClick}
+          onGoogleAuth={handleGoogleLogIn}
+          onAppleAuth={handleAppleLogIn}
+          onSubmit={handleLogIn}
+        />
+      </div>
+    </div>
   );
 };
 
