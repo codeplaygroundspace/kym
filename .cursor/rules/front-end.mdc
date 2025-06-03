@@ -7,3 +7,28 @@ alwaysApply: true
 - You must use Tailwind 4 https://tailwindcss.com/
 - You must follow Components naming convention. Example: nav-bar.tsx
 - Accessibility - Proper ARIA labels, focus states, and semantic HTML
+- I'll create a rule for myself to avoid the unescaped quotes problem in React/JSX code.
+- When writing JSX/React code, always escape quotes in text content to avoid ESLint errors:
+Correct Approaches:
+1. **Use HTML entities:**
+   ```jsx
+   <p>&ldquo;{text}&rdquo;</p>  // Left and right double quotes
+   <p>&quot;{text}&quot;</p>    // Standard double quotes
+   ```
+2. **Use single quotes for JSX attributes, double quotes for content:**
+   ```jsx
+   <p className='text-sm'>"{text}"</p>
+   ```
+3. **Use template literals with escaped quotes:**
+   ```jsx
+   <p>{`"${text}"`}</p>
+   ```
+4. **Use Unicode characters:**
+   ```jsx
+   <p>{'"'}{text}{'"'}</p>
+   ```
+Avoid:
+```jsx
+<p>"Direct quotes in JSX"</p>  // Will cause ESLint error
+```
+This rule will help me consistently avoid the `react/no-unescaped-entities` ESLint error and maintain clean, compliant JSX code.
