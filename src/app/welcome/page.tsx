@@ -1,13 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const WelcomePage = () => {
+  const [backgroundImage, setBackgroundImage] = useState<string>("");
+
+  const backgroundImages = [
+    "/welcome-bg2.jpg",
+    "/welcome-bg3.jpg",
+    "/welcome-bg4.jpg",
+  ];
+
+  useEffect(() => {
+    // Select a random background image on component mount
+    const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+    setBackgroundImage(backgroundImages[randomIndex]);
+  }, []);
+
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat relative flex flex-col px-4 pb-8"
       style={{
-        backgroundImage: `url('https://media.istockphoto.com/id/1504152692/photo/happy-pregnant-woman-looking-at-ultrasound-scan-at-home.jpg?s=1024x1024&w=is&k=20&c=YHuBgVmsjmbt9H3u3y_kWkJIegARQstd0gZI1St0C-0=')`,
+        backgroundImage: backgroundImage
+          ? `url('${backgroundImage}')`
+          : undefined,
       }}
     >
       {/* Gradient overlay for better text readability */}
@@ -17,7 +34,9 @@ const WelcomePage = () => {
       <div className="relative z-10 flex justify-end pt-8">
         <Link
           href="/welcome/how-it-works"
-          className="bg-bg-primary/20 backdrop-blur-sm text-white rounded-card-sm py-2 px-4 text-xs font-medium transition-all hover:bg-bg-primary/30"
+          className="bg-bg-primary/20 backdrop-blur-sm text-white rounded-card-sm py-2 px-4 text-xs font-medium transition-all hover:bg-bg-primary/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+          aria-label="Learn more about how KYM works"
+          tabIndex={0}
         >
           Learn more
         </Link>
@@ -26,22 +45,29 @@ const WelcomePage = () => {
       {/* Main content - centered */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-end">
         <div className="w-full max-w-sm space-y-6">
-          {/* Title */}
-          <h1 className="text-4xl font-bold text-white text-center mb-8">
+          <h1 className="text-4xl font-bold text-white text-center mb-4 font-serif drop-shadow-lg">
             Know your mind
           </h1>
 
-          {/* Buttons */}
+          {/* Intro text */}
+          <p className="text-white/90 text-center text-lg leading-relaxed mb-8">
+            Your mental health journey deserves support and understanding.
+          </p>
+
           <div className="space-y-4">
             <Link
-              href="/sign-up"
-              className="block w-full bg-primary text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all shadow-lg"
+              href="/auth/signup"
+              className="block w-full bg-primary text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              aria-label="Sign up for KYM account"
+              tabIndex={0}
             >
               Sign up
             </Link>
             <Link
-              href="/log-in"
-              className="block w-full bg-bg-primary/20 backdrop-blur-sm  text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all"
+              href="/auth/login"
+              className="block w-full bg-bg-primary/20 backdrop-blur-sm  text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              aria-label="Log in to your KYM account"
+              tabIndex={0}
             >
               Log in
             </Link>
