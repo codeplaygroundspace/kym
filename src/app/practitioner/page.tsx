@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import {
-  LuSearch as Search,
-  LuBell as Bell,
-  LuUser as User,
-  LuTriangleAlert as AlertTriangle,
-  LuTrendingUp as TrendingUp,
-  LuTrendingDown as TrendingDown,
-  LuMessageSquare as MessageSquare,
-} from "react-icons/lu";
+  Search,
+  Bell,
+  User,
+  TriangleAlert,
+  TrendingUp,
+  TrendingDown,
+  MessageSquare,
+} from "lucide-react";
 import {
   mockPatients,
   getStatusColor,
@@ -240,7 +240,7 @@ const PractitionerDashboard = () => {
                         {patient.name}
                       </h3>
                       {patient.flagged && (
-                        <AlertTriangle
+                        <TriangleAlert
                           className="w-4 h-4 text-red-500 flex-shrink-0"
                           aria-label="Flagged patient"
                         />

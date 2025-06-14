@@ -125,10 +125,10 @@ const MoodCheck = () => {
         tabIndex={0}
       >
         {/* <div className="text-4xl mb-2">✨</div> */}
-        <span className="text-black dark:text-gray-300 font-medium text-center text-lg sm:text-xl md:text-2xl mb-2">
+        <span className="text-text-primary font-medium text-center text-lg sm:text-xl md:text-2xl mb-2">
           How are you feeling?
         </span>
-        {/* <div className="today-sublabel text-gray-500 dark:text-gray-400 text-xs sm:text-sm md:text-base text-center">
+        {/* <div className="today-sublabel text-text-muted text-xs sm:text-sm md:text-base text-center">
           Touch to reflect on today
         </div> */}
       </motion.button>

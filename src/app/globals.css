@@ -1,138 +1,102 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: #5856d7;
-  --menu-text: #9c9d9e;
-  --navbar-clearance-height: 5rem; /* Adjust as needed based on actual Navbar height + desired spacing */
+  /* Core Colors */
+  --primary: #6b6aff;
+  --primary-foreground: #ffffff;
 
-  /* Background Color System */
+  /* Background Colors */
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
 
-  /* Text Color System */
-  --text-primary: #111827; /* Main titles and headings */
-  --text-secondary: #6b7280; /* Subtitles and secondary text */
-  --text-muted: #9ca3af; /* Labels and less important text */
+  /* Text Colors */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
 
-  /* Border Radius System */
-  --radius-sm: 0.5rem; /* 8px - small elements like buttons, badges */
-  --radius-md: 0.75rem; /* 12px - medium elements like inputs, small cards */
-  --radius-lg: 1rem; /* 16px - large cards, modals */
-  --radius-xl: 1.5rem; /* 24px - extra large cards, containers */
-  --radius-2xl: 2rem; /* 32px - hero sections, major containers */
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
 
-  /* Gradient System */
-  --gradient-primary: linear-gradient(
-    135deg,
-    #ebd3e3 0%,
-    #fbebae 50%,
-    #eef4e2 100%
-  );
-  --gradient-warm: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-  --gradient-cool: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  /* Gradients */
   --gradient-purple: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
-  --gradient-soft: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
 
-@theme inline {
-  --color-primary: var(--primary);
-  --color-menu-text: var(--menu-text);
-  --font-sans: var(--font-inter);
-
-  /* Custom Background Colors */
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-
-  /* Custom Text Colors */
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-
-  /* Custom Border Radius */
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl);
-  --radius-2xl: var(--radius-2xl);
-
-  /* Custom Gradients */
-  --color-gradient-primary: var(--gradient-primary);
-  --color-gradient-warm: var(--gradient-warm);
-  --color-gradient-cool: var(--gradient-cool);
-  --color-gradient-purple: var(--gradient-purple);
-  --color-gradient-soft: var(--gradient-soft);
+  /* shadcn variables */
+  --background: #ffffff;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #6b6aff;
+  --radius: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Core Colors */
     --primary: #6b6aff;
-    --menu-text: #9ca3af;
+    --primary-foreground: #ffffff;
 
-    /* Dark Mode Background Colors */
-    --bg-primary: #0a0a0a; /* Main background - black */
-    --bg-secondary: #111827; /* Dark grey background */
+    /* Background Colors */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111827;
 
-    /* Dark Mode Text Colors */
-    --text-primary: #f9fafb; /* Main titles and headings */
-    --text-secondary: #d1d5db; /* Subtitles and secondary text */
-    --text-muted: #9ca3af; /* Labels and less important text */
+    /* Text Colors */
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
 
-    /* Dark Mode Gradients */
-    --gradient-primary: linear-gradient(
-      135deg,
-      #2d1b2e 0%,
-      #3d3a1a 50%,
-      #1e2d1b 100%
-    );
-    --gradient-warm: linear-gradient(135deg, #4a3728 0%, #5d2a1a 100%);
-    --gradient-cool: linear-gradient(135deg, #1a3d3a 0%, #2d1b2e 100%);
+    /* Gradients */
     --gradient-purple: linear-gradient(135deg, #3d2a5d 0%, #4a3d1a 100%);
-    --gradient-soft: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+
+    /* shadcn variables */
+    --background: #0a0a0a;
+    --foreground: #f9fafb;
+    --card: #0a0a0a;
+    --card-foreground: #f9fafb;
+    --border: #374151;
+    --input: #374151;
+    --ring: #6b6aff;
   }
+}
+
+@theme inline {
+  /* Map custom variables to Tailwind */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-gradient-purple: var(--gradient-purple);
+
+  /* shadcn colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-inter), system-ui, sans-serif;
-}
-
-/* Line clamp utilities */
-.line-clamp-1 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-}
-
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  font-family: system-ui, sans-serif;
 }
 
 /* Gradient Utilities */
-.bg-gradient-primary {
-  background: var(--gradient-primary);
-}
-
-.bg-gradient-warm {
-  background: var(--gradient-warm);
-}
-
-.bg-gradient-cool {
-  background: var(--gradient-cool);
-}
-
 .bg-gradient-purple {
   background: var(--gradient-purple);
-}
-
-.bg-gradient-soft {
-  background: var(--gradient-soft);
 }
 
 /* Border Radius Utilities */
