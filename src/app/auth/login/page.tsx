@@ -3,11 +3,6 @@
 import LoginForm from "@/components/features/login-form";
 
 const LogInPage = () => {
-  const handleGoogleLogIn = () => {
-    // Google log in logic would go here
-    console.log("Log in with Google");
-  };
-
   const handleLogIn = (data: { email: string; password: string }) => {
     // Log in logic would go here
     console.log("Log in with:", data);
@@ -15,7 +10,7 @@ const LogInPage = () => {
     window.location.href = "/";
   };
 
-  return <LoginForm onGoogleAuth={handleGoogleLogIn} onSubmit={handleLogIn} />;
+  return <LoginForm onSubmit={handleLogIn} />;
 };
 
 export default LogInPage;

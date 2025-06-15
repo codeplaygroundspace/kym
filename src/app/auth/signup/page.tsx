@@ -4,13 +4,9 @@ import SignupForm from "@/components/features/signup-form";
 import PrivacyBanner from "@/components/common/privacy-banner";
 
 const SignUpPage = () => {
-  const handleGoogleSignUp = () => {
-    // Google sign up logic would go here
-    console.log("Sign up with Google");
-  };
-
   const handleSignUp = (data: {
     email: string;
+    password: string;
     userType: "personal" | "practitioner";
   }) => {
     // Sign up logic would go here
@@ -20,7 +16,7 @@ const SignUpPage = () => {
   return (
     <>
       <PrivacyBanner />
-      <SignupForm onGoogleAuth={handleGoogleSignUp} onSubmit={handleSignUp} />
+      <SignupForm onSubmit={handleSignUp} />
     </>
   );
 };
