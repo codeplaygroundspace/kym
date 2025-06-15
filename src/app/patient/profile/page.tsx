@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import BackButton from "@/components/common/back-button";
 import { useAuth } from "@/contexts/auth-context";
+import { generateUsername, generateInitials } from "@/lib/username-generator";
 import {
   Settings,
   Bell,
@@ -19,15 +20,41 @@ import {
 } from "lucide-react";
 
 const ProfilePage = () => {
-  const { logout, user } = useAuth();
+  const { logout, user, profile } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
+  // Generate a consistent fallback username for users without display_name
+  const fallbackUsername = useMemo(() => {
+    if (user?.id) {
+      // Use user ID to seed a consistent username for this user
+      const seed = user.id.slice(-8); // Use last 8 chars of user ID
+      const seedNum = parseInt(seed, 16) || 12345;
+
+      // Set a temporary seed for consistent generation
+      const originalRandom = Math.random;
+      Math.random = () => {
+        const x = Math.sin(seedNum) * 10000;
+        return x - Math.floor(x);
+      };
+
+      const username = generateUsername();
+
+      // Restore original Math.random
+      Math.random = originalRandom;
+
+      return username;
+    }
+    return "Friend";
+  }, [user?.id]);
+
+  const displayName = profile?.display_name || fallbackUsername;
+
   // TODO: Replace with actual user data from context/state management
   const [userProfile, setUserProfile] = useState({
-    name: "Fernanda Martinez", // TODO: Add name field to profile or get from separate patient profile
-    email: user?.email || "fernanda.m@email.com",
-    initials: "FM", // TODO: Calculate from name when available
+    name: displayName,
+    email: user?.email || "user@email.com",
+    initials: generateInitials(displayName),
     avatar: null, // TODO: Add avatar field to profile
     joinDate: user?.created_at
       ? new Date(user.created_at).toLocaleDateString("en-US", {
@@ -36,9 +63,6 @@ const ProfilePage = () => {
         })
       : "March 2024",
     location: "London, UK", // TODO: Add location field to profile
-    pregnancyWeek: 25, // TODO: Add pregnancy_week field to profile or get from patient profile
-    dueDate: "August 2024", // TODO: Add due_date field to profile or get from patient profile
-    status: "Pregnant" as "Pregnant" | "Postpartum", // TODO: Add status field to profile
   });
 
   const handleBackClick = () => {
@@ -148,6 +172,7 @@ const ProfilePage = () => {
               onChange={(e) =>
                 setUserProfile({ ...userProfile, name: e.target.value })
               }
+              placeholder="Enter your display name"
               className="text-xl font-semibold text-text-primary bg-transparent border-b border-gray-300 dark:border-gray-600 text-center mb-2 focus:outline-none focus:border-primary"
             />
           ) : (
@@ -156,26 +181,11 @@ const ProfilePage = () => {
             </h2>
           )}
 
-          <p className="text-text-secondary text-sm mb-4">
-            {userProfile.pregnancyWeek}w {userProfile.status.toLowerCase()} •
-            Due {userProfile.dueDate}
-          </p>
-
-          {/* Quick Stats */}
-          <div className="grid grid-cols-2 gap-4 mt-6">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-text-primary">
-                {userProfile.pregnancyWeek}
-              </div>
-              <div className="text-xs text-text-muted">weeks strong</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-text-primary">
-                {Math.floor((40 - userProfile.pregnancyWeek) * 7)}
-              </div>
-              <div className="text-xs text-text-muted">days to go</div>
-            </div>
-          </div>
+          {!isEditing && (
+            <p className="text-xs text-text-muted mb-4">
+              Your privacy-friendly display name • Tap Edit to change
+            </p>
+          )}
         </div>
 
         {/* Contact Information */}
@@ -284,7 +294,7 @@ const ProfilePage = () => {
           className={`w-full flex items-center justify-center gap-3 p-4 rounded-card-lg font-medium transition-colors ${
             isLoggingOut
               ? "bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
-              : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30"
+              : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 cursor-pointer"
           }`}
           whileHover={!isLoggingOut ? { scale: 1.02 } : {}}
           whileTap={!isLoggingOut ? { scale: 0.98 } : {}}
@@ -292,12 +302,12 @@ const ProfilePage = () => {
           {isLoggingOut ? (
             <>
               <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
-              Signing Out...
+              Logging Out...
             </>
           ) : (
             <>
               <LogOut className="w-5 h-5" />
-              Sign Out
+              Logout
             </>
           )}
         </motion.button>

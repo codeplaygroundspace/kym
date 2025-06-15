@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { AuthState } from "@/types/auth";
 import { supabase } from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
+import { generateUsername } from "@/lib/username-generator";
 
 interface AuthContextType extends AuthState {
   login: (email: string, password: string) => Promise<void>;
@@ -154,12 +155,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setAuthState((prev) => ({ ...prev, isLoading: true, error: null }));
 
+      // Generate a privacy-friendly display name
+      const displayName = generateUsername();
+
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: {
             role,
+            display_name: displayName,
           },
         },
       });

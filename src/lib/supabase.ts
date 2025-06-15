@@ -32,6 +32,8 @@ export interface Profile {
   id: string;
   email: string;
   role: "patient" | "practitioner";
+  display_name?: string; // Privacy-friendly display name
+  avatar_url?: string; // Profile avatar URL
   created_at: string;
   updated_at: string;
 }
