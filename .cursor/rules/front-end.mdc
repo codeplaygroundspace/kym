@@ -4,7 +4,11 @@ globs:
 alwaysApply: true
 ---
 - Always build for light and dark theme
-- You must use Tailwind 4 https://tailwindcss.com/
+- You must use Tailwind 4 https://tailwindcss.com
+- You must use Supabase as the database and authentication.
+- You must use ESLint best practise.
+- You must use shadcn whenever possible to mantain consistency.
+- You must use Typescript. Use any as the last resource, in general, try go avoid using any whenever is possible.
 - You must follow Components naming convention. Example: nav-bar.tsx
 - Accessibility - Proper ARIA labels, focus states, and semantic HTML
 - I'll create a rule for myself to avoid the unescaped quotes problem in React/JSX code.

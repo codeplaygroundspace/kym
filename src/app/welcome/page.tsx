@@ -6,13 +6,13 @@ import { useState, useEffect } from "react";
 const WelcomePage = () => {
   const [backgroundImage, setBackgroundImage] = useState<string>("");
 
-  const backgroundImages = [
-    "/welcome-bg2.jpg",
-    "/welcome-bg3.jpg",
-    "/welcome-bg4.jpg",
-  ];
-
   useEffect(() => {
+    const backgroundImages = [
+      "/welcome-bg2.jpg",
+      "/welcome-bg3.jpg",
+      "/welcome-bg4.jpg",
+    ];
+
     // Select a random background image on component mount
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
     setBackgroundImage(backgroundImages[randomIndex]);

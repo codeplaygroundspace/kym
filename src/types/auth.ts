@@ -1,12 +1,7 @@
-export type UserRole = "patient" | "practitioner";
+import { User as SupabaseUser } from "@supabase/supabase-js";
+import { Profile } from "@/lib/supabase";
 
-export interface User {
-  id: string;
-  email: string;
-  role: UserRole;
-  createdAt: string;
-  updatedAt: string;
-}
+export type UserRole = "patient" | "practitioner";
 
 export interface PatientProfile {
   id: string;
@@ -30,8 +25,8 @@ export interface PractitionerProfile {
 }
 
 export interface AuthState {
-  user: User | null;
-  profile: PatientProfile | PractitionerProfile | null;
+  user: SupabaseUser | null;
+  profile: Profile | null;
   isLoading: boolean;
   error: string | null;
 }

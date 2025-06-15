@@ -10,17 +10,15 @@ import {
   pregnancyWellnessCourses,
   mentalHealthCourses,
   birthPrepCourses,
-  Expert,
-  Course,
 } from "@/data/wisdom-data";
 
 const WisdomPage = () => {
-  const handleExpertClick = (expert: Expert) => {
-    console.log("Expert clicked:", expert);
+  const handleExpertClick = () => {
+    // TODO: Navigate to expert detail page
   };
 
-  const handleCourseClick = (course: Course) => {
-    console.log("Course clicked:", course);
+  const handleCourseClick = () => {
+    // TODO: Navigate to course detail page
   };
 
   return (

@@ -21,20 +21,15 @@ const moodOptions: MoodOption[] = [
 const MoodSelector = () => {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
 
-  const handleMoodSelect = (moodId: string, moodValue: number) => {
+  const handleMoodSelect = (moodId: string) => {
     setSelectedMood(moodId);
     // TODO: Implement mood tracking functionality
-    console.log(`Selected mood: ${moodId} (value: ${moodValue})`);
   };
 
-  const handleKeyDown = (
-    event: React.KeyboardEvent,
-    moodId: string,
-    moodValue: number
-  ) => {
+  const handleKeyDown = (event: React.KeyboardEvent, moodId: string) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      handleMoodSelect(moodId, moodValue);
+      handleMoodSelect(moodId);
     }
   };
 
@@ -50,8 +45,8 @@ const MoodSelector = () => {
         {moodOptions.map((mood) => (
           <motion.button
             key={mood.id}
-            onClick={() => handleMoodSelect(mood.id, mood.value)}
-            onKeyDown={(e) => handleKeyDown(e, mood.id, mood.value)}
+            onClick={() => handleMoodSelect(mood.id)}
+            onKeyDown={(e) => handleKeyDown(e, mood.id)}
             className={`
               flex flex-col items-center justify-center
               w-16 h-20 sm:w-20 sm:h-24
