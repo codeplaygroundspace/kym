@@ -1,7 +1,6 @@
 import PageHeader from "@/components/common/page-header";
 import DateHeader from "@/components/features/date-header";
 import GreetingSection from "@/components/features/greeting-section";
-import WeeksCounter from "@/components/features/weeks-counter";
 import MoodSelector from "@/components/features/mood-selector";
 import DailyQuote from "@/components/features/daily-quote";
 
@@ -13,7 +12,6 @@ export default function PatientDashboard() {
           <DateHeader />
           <GreetingSection />
         </PageHeader>
-        <WeeksCounter />
         <MoodSelector />
         <DailyQuote />
       </div>

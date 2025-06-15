@@ -1,8 +1,12 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useAuth } from "@/contexts/auth-context";
+import { generateUsername, generateInitials } from "@/lib/username-generator";
+import { useMemo } from "react";
 
 interface UserAvatarProps {
   size?: "sm" | "md" | "lg";
@@ -15,12 +19,34 @@ const UserAvatar = ({
   showNotification = false,
   className = "",
 }: UserAvatarProps) => {
-  // TODO: Replace with actual user data from context/props
-  const user = {
-    name: "Fernanda M.",
-    initials: "FM",
-    avatar: null, // URL to avatar image if available
-  };
+  const { user, profile } = useAuth();
+
+  // Generate a consistent fallback username for users without display_name
+  const fallbackUsername = useMemo(() => {
+    if (user?.id) {
+      // Use user ID to seed a consistent username for this user
+      const seed = user.id.slice(-8); // Use last 8 chars of user ID
+      const seedNum = parseInt(seed, 16) || 12345;
+
+      // Set a temporary seed for consistent generation
+      const originalRandom = Math.random;
+      Math.random = () => {
+        const x = Math.sin(seedNum) * 10000;
+        return x - Math.floor(x);
+      };
+
+      const username = generateUsername();
+
+      // Restore original Math.random
+      Math.random = originalRandom;
+
+      return username;
+    }
+    return "Friend";
+  }, [user?.id]);
+
+  const displayName = profile?.display_name || fallbackUsername;
+  const initials = generateInitials(displayName);
 
   const getSizeClasses = () => {
     switch (size) {
@@ -50,18 +76,18 @@ const UserAvatar = ({
         whileTap={{ scale: 0.95 }}
         tabIndex={0}
         role="button"
-        aria-label={`View profile for ${user.name}`}
+        aria-label={`View profile for ${displayName}`}
       >
-        {user.avatar ? (
+        {profile?.avatar_url ? (
           <Image
-            src={user.avatar}
-            alt={user.name}
+            src={profile.avatar_url}
+            alt={displayName}
             width={size === "sm" ? 32 : size === "lg" ? 48 : 40}
             height={size === "sm" ? 32 : size === "lg" ? 48 : 40}
             className="w-full h-full rounded-full object-cover"
           />
         ) : (
-          <span className="font-semibold text-primary">{user.initials}</span>
+          <span className="font-semibold text-primary">{initials}</span>
         )}
       </motion.div>
 
