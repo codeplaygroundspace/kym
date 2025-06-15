@@ -79,7 +79,9 @@ const PractitionerDashboard = () => {
                 tabIndex={0}
                 aria-label="Notifications"
                 onKeyDown={(e) =>
-                  handleKeyDown(e, () => console.log("Notifications clicked"))
+                  handleKeyDown(e, () => {
+                    /* TODO: Handle notifications */
+                  })
                 }
               >
                 <Bell className="w-6 h-6 text-text-secondary" />
@@ -95,7 +97,9 @@ const PractitionerDashboard = () => {
                 tabIndex={0}
                 aria-label="User profile"
                 onKeyDown={(e) =>
-                  handleKeyDown(e, () => console.log("Profile clicked"))
+                  handleKeyDown(e, () => {
+                    /* TODO: Handle profile */
+                  })
                 }
               >
                 <User className="w-5 h-5 text-blue-600 dark:text-blue-300" />
@@ -216,11 +220,13 @@ const PractitionerDashboard = () => {
             tabIndex={0}
             aria-label={`View details for ${patient.name}`}
             onKeyDown={(e) =>
-              handleKeyDown(e, () =>
-                console.log(`Clicked patient ${patient.name}`)
-              )
+              handleKeyDown(e, () => {
+                /* TODO: Navigate to patient detail */
+              })
             }
-            onClick={() => console.log(`Clicked patient ${patient.name}`)}
+            onClick={() => {
+              /* TODO: Navigate to patient detail */
+            }}
           >
             {/* Main Patient Info */}
             <div className="p-4">

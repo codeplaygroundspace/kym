@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import BackButton from "@/components/common/back-button";
+import { useAuth } from "@/contexts/auth-context";
 import {
   Settings,
   Bell,
@@ -18,19 +19,26 @@ import {
 } from "lucide-react";
 
 const ProfilePage = () => {
+  const { logout, user } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   // TODO: Replace with actual user data from context/state management
   const [userProfile, setUserProfile] = useState({
-    name: "Fernanda Martinez",
-    email: "fernanda.m@email.com",
-    initials: "FM",
-    avatar: null,
-    joinDate: "March 2024",
-    location: "London, UK",
-    pregnancyWeek: 25,
-    dueDate: "August 2024",
-    status: "Pregnant" as "Pregnant" | "Postpartum",
+    name: "Fernanda Martinez", // TODO: Add name field to profile or get from separate patient profile
+    email: user?.email || "fernanda.m@email.com",
+    initials: "FM", // TODO: Calculate from name when available
+    avatar: null, // TODO: Add avatar field to profile
+    joinDate: user?.created_at
+      ? new Date(user.created_at).toLocaleDateString("en-US", {
+          month: "long",
+          year: "numeric",
+        })
+      : "March 2024",
+    location: "London, UK", // TODO: Add location field to profile
+    pregnancyWeek: 25, // TODO: Add pregnancy_week field to profile or get from patient profile
+    dueDate: "August 2024", // TODO: Add due_date field to profile or get from patient profile
+    status: "Pregnant" as "Pregnant" | "Postpartum", // TODO: Add status field to profile
   });
 
   const handleBackClick = () => {
@@ -44,13 +52,19 @@ const ProfilePage = () => {
   const handleSaveProfile = () => {
     // TODO: Implement save functionality
     setIsEditing(false);
-    console.log("Profile saved:", userProfile);
   };
 
-  const handleLogout = () => {
-    // TODO: Implement logout functionality
-    console.log("Logging out...");
-    window.location.href = "/welcome";
+  const handleLogout = async () => {
+    try {
+      setIsLoggingOut(true);
+      await logout();
+      // Navigation will be handled by auth context or redirect to welcome
+      window.location.href = "/welcome";
+    } catch (error) {
+      console.error("Logout failed:", error);
+      setIsLoggingOut(false);
+      // Could show error toast here
+    }
   };
 
   const profileMenuItems = [
@@ -266,12 +280,26 @@ const ProfilePage = () => {
         {/* Logout Button */}
         <motion.button
           onClick={handleLogout}
-          className="w-full flex items-center justify-center gap-3 p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-card-lg font-medium hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          disabled={isLoggingOut}
+          className={`w-full flex items-center justify-center gap-3 p-4 rounded-card-lg font-medium transition-colors ${
+            isLoggingOut
+              ? "bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
+              : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30"
+          }`}
+          whileHover={!isLoggingOut ? { scale: 1.02 } : {}}
+          whileTap={!isLoggingOut ? { scale: 0.98 } : {}}
         >
-          <LogOut className="w-5 h-5" />
-          Sign Out
+          {isLoggingOut ? (
+            <>
+              <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+              Signing Out...
+            </>
+          ) : (
+            <>
+              <LogOut className="w-5 h-5" />
+              Sign Out
+            </>
+          )}
         </motion.button>
       </div>
     </div>

@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 const MoodCheck = () => {
   const handleMoodClick = () => {
     // TODO: Implement mood selection functionality
-    console.log("Mood check clicked");
   };
 
   // Breathing animation variants
