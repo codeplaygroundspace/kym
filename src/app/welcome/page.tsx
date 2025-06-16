@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useAnalytics } from "@/lib/hooks/use-analytics";
 
 const WelcomePage = () => {
   const [backgroundImage, setBackgroundImage] = useState<string>("");
+  const { trackPage, trackClick } = useAnalytics();
 
   useEffect(() => {
     const backgroundImages = [
@@ -16,7 +18,34 @@ const WelcomePage = () => {
     // Select a random background image on component mount
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
     setBackgroundImage(backgroundImages[randomIndex]);
-  }, []);
+
+    // Track page view
+    trackPage("welcome", {
+      backgroundImage: backgroundImages[randomIndex],
+      timestamp: new Date().toISOString(),
+    });
+  }, [trackPage]);
+
+  const handleLearnMoreClick = () => {
+    trackClick("learn_more_button", {
+      location: "welcome_page",
+      destination: "/welcome/how-it-works",
+    });
+  };
+
+  const handleSignUpClick = () => {
+    trackClick("sign_up_button", {
+      location: "welcome_page",
+      destination: "/auth/signup",
+    });
+  };
+
+  const handleLoginClick = () => {
+    trackClick("login_button", {
+      location: "welcome_page",
+      destination: "/auth/login",
+    });
+  };
 
   return (
     <div
@@ -34,6 +63,7 @@ const WelcomePage = () => {
       <div className="relative z-10 flex justify-end pt-8">
         <Link
           href="/welcome/how-it-works"
+          onClick={handleLearnMoreClick}
           className="bg-bg-primary/20 backdrop-blur-sm text-white rounded-card-sm py-2 px-4 text-xs font-medium transition-all hover:bg-bg-primary/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
           aria-label="Learn more about how KYM works"
           tabIndex={0}
@@ -57,6 +87,7 @@ const WelcomePage = () => {
           <div className="space-y-4">
             <Link
               href="/auth/signup"
+              onClick={handleSignUpClick}
               className="block w-full bg-primary text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               aria-label="Sign up for KYM account"
               tabIndex={0}
@@ -65,6 +96,7 @@ const WelcomePage = () => {
             </Link>
             <Link
               href="/auth/login"
+              onClick={handleLoginClick}
               className="block w-full bg-bg-primary/20 backdrop-blur-sm  text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               aria-label="Log in to your KYM account"
               tabIndex={0}
