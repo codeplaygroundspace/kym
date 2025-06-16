@@ -1,7 +1,6 @@
 "use client";
 
 import LoginForm from "@/components/features/login-form";
-import PrivacyBanner from "@/components/common/privacy-banner";
 import { useAuth } from "@/contexts/auth-context";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -46,12 +45,7 @@ const LoginPage = () => {
     );
   }
 
-  return (
-    <>
-      <PrivacyBanner />
-      <LoginForm onSubmit={handleLogIn} />
-    </>
-  );
+  return <LoginForm onSubmit={handleLogIn} />;
 };
 
 export default LoginPage;
