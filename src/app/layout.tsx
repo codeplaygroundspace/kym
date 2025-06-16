@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, EB_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/auth-context";
 
@@ -29,6 +31,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${ebGaramond.variable} antialiased`}>
         <AuthProvider>{children}</AuthProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

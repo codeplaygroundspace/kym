@@ -1,22 +1,35 @@
+"use client";
+
+import { useEffect } from "react";
 import Navbar from "@/components/common/nav-bar";
 import PageHeader from "@/components/common/page-header";
-import MilestoneCard from "@/components/features/milestone-card";
-import JourneyTimeline from "@/components/features/journey-timeline";
-import { timelineEntries, currentMilestone } from "@/data/journey-data";
+import JourneyContent from "@/components/features/journey-content";
+import { useAuth } from "@/contexts/auth-context";
+import { useAnalytics } from "@/lib/hooks/use-analytics";
+import { useMoodEntries } from "@/lib/hooks/use-mood-entries";
 
 const JourneyPage = () => {
+  const { user } = useAuth();
+  const { trackPage } = useAnalytics();
+  const { timelineEntries, isLoading, error } = useMoodEntries({ limit: 10 });
+
+  useEffect(() => {
+    trackPage("journey", {
+      timestamp: new Date().toISOString(),
+    });
+  }, [trackPage]);
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <main>
         <div className="container mx-auto px-4 pt-10 pb-20 max-w-md">
           <PageHeader title="Journey" showTitle />
 
-          <JourneyTimeline entries={timelineEntries} />
-
-          <MilestoneCard
-            title={currentMilestone.title}
-            description={currentMilestone.description}
-            emoji={currentMilestone.emoji}
+          <JourneyContent
+            timelineEntries={timelineEntries}
+            isLoading={isLoading}
+            error={error}
+            isAuthenticated={!!user}
           />
         </div>
       </main>
