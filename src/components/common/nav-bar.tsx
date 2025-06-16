@@ -60,7 +60,13 @@ export default function Navbar() {
                 tabIndex={0}
                 aria-label={`Navigate to ${name}`}
               >
-                <div className="mb-1">
+                <div
+                  className={`mb-1 p-2 rounded-lg transition-colors ${
+                    isActive
+                      ? "bg-primary/10 dark:bg-primary/20"
+                      : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                  }`}
+                >
                   <Icon />
                 </div>
                 <span className="text-xs text-center font-semibold">
