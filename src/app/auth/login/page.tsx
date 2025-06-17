@@ -14,7 +14,6 @@ const LoginPage = () => {
     // Only redirect if we have both user and profile, not loading, and haven't redirected yet
     if (!isLoading && user && profile && !hasRedirected.current) {
       hasRedirected.current = true;
-      console.log("Login page: Redirecting user to", profile.role, "dashboard");
 
       // Use setTimeout to ensure the authentication state is fully settled
       setTimeout(() => {

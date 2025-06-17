@@ -69,8 +69,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log("Auth state change:", event, session?.user?.email);
-
       if (session?.user) {
         await fetchUserProfile(session.user);
       } else {
@@ -99,8 +97,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         throw error;
       }
 
-      console.log("Profile fetched:", profile);
-
       setAuthState({
         user,
         profile,
@@ -123,7 +119,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setAuthState((prev) => ({ ...prev, isLoading: true, error: null }));
 
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -132,8 +128,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Login error:", error);
         throw error;
       }
-
-      console.log("Login successful:", data.user?.email);
 
       // Profile will be fetched automatically by the auth state change listener
     } catch (error) {

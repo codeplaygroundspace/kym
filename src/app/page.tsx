@@ -15,13 +15,6 @@ export default function RootPage() {
 
       if (user && profile) {
         // User is authenticated, redirect to their dashboard
-        console.log(
-          "Root page redirecting authenticated user:",
-          user.email,
-          "with role:",
-          profile.role
-        );
-
         setTimeout(() => {
           if (profile.role === "patient") {
             router.replace("/patient");
@@ -31,7 +24,6 @@ export default function RootPage() {
         }, 100);
       } else {
         // User is not authenticated, redirect to welcome page
-        console.log("Root page redirecting unauthenticated user to welcome");
         setTimeout(() => {
           router.replace("/welcome");
         }, 100);

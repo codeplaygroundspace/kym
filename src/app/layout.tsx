@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/auth-context";
+import { SupabaseProvider } from "@/contexts/supabase-context";
+import { MoodProvider } from "@/contexts/mood-context";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,7 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${ebGaramond.variable} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+        <SupabaseProvider>
+          <AuthProvider>
+            <MoodProvider>{children}</MoodProvider>
+          </AuthProvider>
+        </SupabaseProvider>
         <Analytics />
         <SpeedInsights />
       </body>
