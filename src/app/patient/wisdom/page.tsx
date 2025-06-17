@@ -2,77 +2,27 @@
 
 import Navbar from "@/components/common/nav-bar";
 import PageHeader from "@/components/common/page-header";
-import ExpertCard from "@/components/features/expert-card";
-import CourseCard from "@/components/features/course-card";
-import ContentSection from "@/components/features/content-section";
-import {
-  experts,
-  pregnancyWellnessCourses,
-  mentalHealthCourses,
-  birthPrepCourses,
-} from "@/data/wisdom-data";
+import { FileText } from "lucide-react";
 
 const WisdomPage = () => {
-  const handleExpertClick = () => {
-    // TODO: Navigate to expert detail page
-  };
-
-  const handleCourseClick = () => {
-    // TODO: Navigate to course detail page
-  };
-
   return (
     <div className="min-h-screen bg-bg-secondary">
       <main className="pb-20">
         <div className="container mx-auto px-4 pt-10 max-w-md">
           <PageHeader title="Wisdom" showTitle />
 
-          {/* Expert Insights Section */}
-          <div className="mb-8">
-            <h2 className="text-xl font-bold text-text-primary mb-4">
-              Expert Insights
-            </h2>
-            <div className="flex gap-3 overflow-x-auto pb-2">
-              {experts.map((expert) => (
-                <div key={expert.id} className="flex-shrink-0 w-48">
-                  <ExpertCard expert={expert} onClick={handleExpertClick} />
-                </div>
-              ))}
+          {/* Empty State */}
+          <div className="flex flex-col items-center justify-center py-16 px-6">
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
+              <FileText className="w-8 h-8 text-text-muted" />
             </div>
+            <h3 className="text-lg font-semibold text-text-primary mb-2">
+              No Notes Yet
+            </h3>
+            <p className="text-text-muted text-center max-w-sm">
+              Practitioner notes will be displayed here
+            </p>
           </div>
-
-          {/* Pregnancy Wellness Section */}
-          <ContentSection title="Pregnancy Wellness">
-            {pregnancyWellnessCourses.map((course) => (
-              <CourseCard
-                key={course.id}
-                course={course}
-                onClick={handleCourseClick}
-              />
-            ))}
-          </ContentSection>
-
-          {/* Mental Health & Relaxation Section */}
-          <ContentSection title="Mental Health & Relaxation">
-            {mentalHealthCourses.map((course) => (
-              <CourseCard
-                key={course.id}
-                course={course}
-                onClick={handleCourseClick}
-              />
-            ))}
-          </ContentSection>
-
-          {/* Birth Preparation Section */}
-          <ContentSection title="Birth Preparation">
-            {birthPrepCourses.map((course) => (
-              <CourseCard
-                key={course.id}
-                course={course}
-                onClick={handleCourseClick}
-              />
-            ))}
-          </ContentSection>
         </div>
       </main>
       <Navbar />

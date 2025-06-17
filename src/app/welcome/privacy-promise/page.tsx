@@ -9,7 +9,7 @@ const PrivacyPromisePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-secondary">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-4 py-4">
         <div className="flex items-center gap-3">
@@ -35,7 +35,7 @@ const PrivacyPromisePage = () => {
 
         {/* Privacy Principles */}
         <div className="space-y-6">
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-green-600 font-bold text-lg">🔒</span>
@@ -53,7 +53,7 @@ const PrivacyPromisePage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-blue-600 font-bold text-lg">👤</span>
@@ -70,7 +70,7 @@ const PrivacyPromisePage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-purple-600 font-bold text-lg">🛡️</span>
@@ -88,7 +88,7 @@ const PrivacyPromisePage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-orange-600 font-bold text-lg">🚫</span>
@@ -107,7 +107,7 @@ const PrivacyPromisePage = () => {
         </div>
 
         {/* Transparency Section */}
-        <div className="bg-gray-50 rounded-card-lg p-6">
+        <div className="bg-gray-50 rounded-2xl p-6">
           <h3 className="text-lg font-semibold text-text-primary mb-3">
             Complete Transparency
           </h3>
@@ -133,7 +133,7 @@ const PrivacyPromisePage = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-primary/5 rounded-card-lg p-6">
+        <div className="bg-primary/5 rounded-2xl p-6">
           <h3 className="text-lg font-semibold text-text-primary mb-3">
             Questions about privacy?
           </h3>
@@ -157,13 +157,13 @@ const PrivacyPromisePage = () => {
           <div className="space-y-3">
             <Link
               href="/sign-up"
-              className="block w-full bg-primary text-white rounded-card-lg py-4 px-6 font-semibold text-center transition-all shadow-lg hover:bg-primary/90"
+              className="block w-full bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-center transition-all shadow-lg hover:bg-primary/90"
             >
               Sign up now
             </Link>
             <Link
               href="/welcome"
-              className="block w-full bg-gray-100 text-text-primary rounded-card-lg py-4 px-6 font-medium text-center transition-all hover:bg-gray-200"
+              className="block w-full bg-gray-100 text-text-primary rounded-2xl py-4 px-6 font-medium text-center transition-all hover:bg-gray-200"
             >
               Back to welcome
             </Link>

@@ -6,7 +6,7 @@ export default function PatientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-secondary">
       {children}
       <Navbar />
     </div>

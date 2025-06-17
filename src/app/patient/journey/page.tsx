@@ -20,7 +20,7 @@ const JourneyPage = () => {
   }, [trackPage]);
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-secondary">
       <main>
         <div className="container mx-auto px-4 pt-10 pb-20 max-w-md">
           <PageHeader title="Journey" showTitle />

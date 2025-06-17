@@ -53,7 +53,7 @@ const MoodSelector = () => {
         <h2 className="text-xl font-semibold text-text-primary text-center mb-6">
           Mood logged for today! ✨
         </h2>
-        <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-card-lg p-4 text-center">
+        <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-2xl p-4 text-center">
           <p className="text-sm text-green-700 dark:text-green-200">
             Thank you for sharing how you&apos;re feeling today. Check your
             Journey page to see your progress!
@@ -72,7 +72,7 @@ const MoodSelector = () => {
 
       {/* Error Display */}
       {error && (
-        <div className="mb-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-card-sm p-3">
+        <div className="mb-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg p-3">
           <p className="text-sm text-red-700 dark:text-red-200 text-center">
             {error}
           </p>

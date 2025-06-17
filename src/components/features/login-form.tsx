@@ -79,7 +79,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
         {/* Error Display */}
         {error && (
           <div
-            className={`border rounded-card-sm p-4 ${
+            className={`border rounded-lg p-4 ${
               isAccountNotFoundError
                 ? "bg-blue-50 border-blue-200"
                 : "bg-red-50 border-red-200"
@@ -110,7 +110,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
                     <button
                       onClick={handleSignUpClick}
                       onKeyDown={(e) => handleKeyDown(e, handleSignUpClick)}
-                      className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-card-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                       tabIndex={0}
                       aria-label="Create new account"
                     >
@@ -130,7 +130,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
             value={email}
             onChange={handleEmailChange}
             placeholder="Email"
-            className={`w-full bg-gray-100 border rounded-card-sm py-2 px-4 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all ${
+            className={`w-full bg-gray-100 border rounded-lg py-2 px-4 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all ${
               email.trim() !== "" && !isValidEmail(email)
                 ? "border-red-300 focus:ring-red-500 focus:border-red-500"
                 : "border-gray-200"
@@ -153,7 +153,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
               value={password}
               onChange={handlePasswordChange}
               placeholder="Password"
-              className="w-full bg-gray-100 border border-gray-200 rounded-card-sm py-2 px-4 pr-12 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+              className="w-full bg-gray-100 border border-gray-200 rounded-lg py-2 px-4 pr-12 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
               aria-label="Password"
               tabIndex={0}
             />
@@ -179,7 +179,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
           onClick={handleSubmit}
           onKeyDown={(e) => handleKeyDown(e, handleSubmit)}
           disabled={!isFormValid || isLoading}
-          className={`w-full rounded-card-sm py-2 px-4 font-semibold transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+          className={`w-full rounded-lg py-2 px-4 font-semibold transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${
             isFormValid && !isLoading
               ? "bg-primary hover:bg-primary/90 text-white cursor-pointer focus:ring-primary"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"

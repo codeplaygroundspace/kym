@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       </div>
       <input
         type="text"
-        className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-gray-800 border-none rounded-card-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-gray-700 transition-colors"
+        className="w-full pl-10 pr-4 py-3 bg-gray-100 dark:bg-gray-800 border-none rounded-2xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-gray-700 transition-colors"
         placeholder={placeholder}
         onChange={handleInputChange}
         aria-label="Search content"

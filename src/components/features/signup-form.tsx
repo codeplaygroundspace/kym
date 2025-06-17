@@ -90,7 +90,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
         {/* Error Display */}
         {error && (
           <div
-            className={`border rounded-card-sm p-4 ${
+            className={`border rounded-lg p-4 ${
               isUserExistsError
                 ? "bg-blue-50 border-blue-200"
                 : "bg-red-50 border-red-200"
@@ -121,7 +121,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
                     <button
                       onClick={handleLoginClick}
                       onKeyDown={(e) => handleKeyDown(e, handleLoginClick)}
-                      className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-card-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                       tabIndex={0}
                       aria-label="Go to login page"
                     >
@@ -136,13 +136,13 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
 
         {/* User Role Selection */}
         <div>
-          <div className="bg-gray-100 rounded-card-lg p-0.5 flex">
+          <div className="bg-gray-100 rounded-2xl p-0.5 flex">
             <button
               onClick={() => handleUserRoleChange("patient")}
               onKeyDown={(e) =>
                 handleKeyDown(e, () => handleUserRoleChange("patient"))
               }
-              className={`flex-1 py-3 px-2 rounded-card-md text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+              className={`flex-1 py-3 px-2 rounded-xl text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                 selectedUserRole === "patient"
                   ? "bg-white text-text-primary shadow-sm"
                   : "text-text-secondary hover:text-text-primary"
@@ -160,7 +160,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
               onKeyDown={(e) =>
                 handleKeyDown(e, () => handleUserRoleChange("practitioner"))
               }
-              className={`flex-1 py-3 px-2 rounded-card-md text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+              className={`flex-1 py-3 px-2 rounded-xl text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                 selectedUserRole === "practitioner"
                   ? "bg-white text-text-primary shadow-sm"
                   : "text-text-secondary hover:text-text-primary"
@@ -185,7 +185,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
             value={email}
             onChange={handleEmailChange}
             placeholder="Email"
-            className={`w-full bg-gray-100 border rounded-card-sm py-2 px-4 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all ${
+            className={`w-full bg-gray-100 border rounded-lg py-2 px-4 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all ${
               email.trim() !== "" && !isValidEmail(email)
                 ? "border-red-300 focus:ring-red-500 focus:border-red-500"
                 : "border-gray-200"
@@ -208,7 +208,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
               value={password}
               onChange={handlePasswordChange}
               placeholder="Password"
-              className="w-full bg-gray-100 border border-gray-200 rounded-card-sm py-2 px-4 pr-12 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+              className="w-full bg-gray-100 border border-gray-200 rounded-lg py-2 px-4 pr-12 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
               aria-label="Password"
               tabIndex={0}
             />
@@ -234,7 +234,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => {
           onClick={handleSubmit}
           onKeyDown={(e) => handleKeyDown(e, handleSubmit)}
           disabled={!isFormValid || isLoading}
-          className={`w-full rounded-card-sm py-2 px-4 font-semibold transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+          className={`w-full rounded-lg py-2 px-4 font-semibold transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 ${
             isFormValid && !isLoading
               ? "bg-primary hover:bg-primary/90 text-white cursor-pointer focus:ring-primary"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"

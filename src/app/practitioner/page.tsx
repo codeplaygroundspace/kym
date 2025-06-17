@@ -112,19 +112,19 @@ const PractitionerDashboard = () => {
       {/* Quick Stats */}
       <div className="px-4 py-4">
         <div className="grid grid-cols-4 gap-2">
-          <div className="bg-bg-primary rounded-card-lg p-3 text-center">
+          <div className="bg-bg-primary rounded-2xl p-3 text-center">
             <p className="text-lg font-bold text-text-primary">{stats.total}</p>
             <p className="text-xs text-text-muted">Total</p>
           </div>
-          <div className="bg-bg-primary rounded-card-lg p-3 text-center">
+          <div className="bg-bg-primary rounded-2xl p-3 text-center">
             <p className="text-lg font-bold text-red-600">{stats.flagged}</p>
             <p className="text-xs text-text-muted">Flagged</p>
           </div>
-          <div className="bg-bg-primary rounded-card-lg p-3 text-center">
+          <div className="bg-bg-primary rounded-2xl p-3 text-center">
             <p className="text-lg font-bold text-green-600">{stats.active}</p>
             <p className="text-xs text-text-muted">Active</p>
           </div>
-          <div className="bg-bg-primary rounded-card-lg p-3 text-center">
+          <div className="bg-bg-primary rounded-2xl p-3 text-center">
             <p className="text-lg font-bold text-orange-600">
               {stats.inactive}
             </p>
@@ -141,7 +141,7 @@ const PractitionerDashboard = () => {
             <input
               type="text"
               placeholder="Search patients..."
-              className="w-full pl-10 pr-4 py-3 bg-bg-primary border border-gray-200 dark:border-gray-700 rounded-card-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base text-text-primary placeholder:text-text-muted"
+              className="w-full pl-10 pr-4 py-3 bg-bg-primary border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base text-text-primary placeholder:text-text-muted"
               value={searchTerm}
               onChange={handleSearchChange}
               aria-label="Search patients"
@@ -215,7 +215,7 @@ const PractitionerDashboard = () => {
         {filteredPatients.map((patient) => (
           <div
             key={patient.id}
-            className="bg-bg-primary rounded-card-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer"
+            className="bg-bg-primary rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer"
             role="button"
             tabIndex={0}
             aria-label={`View details for ${patient.name}`}
@@ -357,7 +357,7 @@ const PractitionerDashboard = () => {
         ))}
 
         {filteredPatients.length === 0 && (
-          <div className="bg-bg-primary rounded-card-lg p-8 text-center">
+          <div className="bg-bg-primary rounded-2xl p-8 text-center">
             <p className="text-text-secondary">No patients found</p>
             <p className="text-sm text-text-muted mt-1">
               Try adjusting your search or filters

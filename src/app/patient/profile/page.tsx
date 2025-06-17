@@ -82,8 +82,7 @@ const ProfilePage = () => {
     try {
       setIsLoggingOut(true);
       await logout();
-      // Navigation will be handled by auth context or redirect to welcome
-      window.location.href = "/welcome";
+      // Navigation will be handled by auth context and root page automatically
     } catch (error) {
       console.error("Logout failed:", error);
       setIsLoggingOut(false);
@@ -119,7 +118,7 @@ const ProfilePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-secondary">
       {/* Header */}
       <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-4">
         <div className="flex items-center justify-between">
@@ -139,7 +138,7 @@ const ProfilePage = () => {
 
       <div className="px-4 py-6 space-y-6">
         {/* Profile Header */}
-        <div className="bg-white dark:bg-gray-900 rounded-card-lg p-6 text-center">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 text-center">
           {/* Avatar */}
           <div className="relative inline-block mb-4">
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
@@ -189,7 +188,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Contact Information */}
-        <div className="bg-white dark:bg-gray-900 rounded-card-lg p-6">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl p-6">
           <h3 className="text-lg font-semibold text-text-primary mb-4">
             Contact Information
           </h3>
@@ -246,7 +245,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Menu Items */}
-        <div className="bg-white dark:bg-gray-900 rounded-card-lg overflow-hidden">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden">
           {profileMenuItems.map((item, index) => (
             <Link
               key={item.href}
@@ -291,7 +290,7 @@ const ProfilePage = () => {
         <motion.button
           onClick={handleLogout}
           disabled={isLoggingOut}
-          className={`w-full flex items-center justify-center gap-3 p-4 rounded-card-lg font-medium transition-colors ${
+          className={`w-full flex items-center justify-center gap-3 p-4 rounded-2xl font-medium transition-colors ${
             isLoggingOut
               ? "bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
               : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 cursor-pointer"

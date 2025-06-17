@@ -7,7 +7,7 @@ const PrivacyBanner = () => {
     <div className="mb-4 flex justify-center px-4">
       <a
         href="/welcome/privacy-promise"
-        className="bg-black/50 backdrop-blur-sm rounded-card-lg px-4 py-3 flex items-center gap-3 text-white w-full max-w-sm hover:bg-black/60 transition-all"
+        className="bg-black/50 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center gap-3 text-white w-full max-w-sm hover:bg-black/60 transition-all"
         aria-label="View privacy promise details"
       >
         <div className="flex items-center gap-2 flex-1">
