@@ -64,7 +64,7 @@ const WelcomePage = () => {
         <Link
           href="/welcome/how-it-works"
           onClick={handleLearnMoreClick}
-          className="bg-bg-primary/20 backdrop-blur-sm text-white rounded-card-sm py-2 px-4 text-xs font-medium transition-all hover:bg-bg-primary/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+          className="bg-bg-primary/20 backdrop-blur-sm text-white rounded-lg py-2 px-4 text-xs font-medium transition-all hover:bg-bg-primary/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
           aria-label="Learn more about how KYM works"
           tabIndex={0}
         >
@@ -88,7 +88,7 @@ const WelcomePage = () => {
             <Link
               href="/auth/signup"
               onClick={handleSignUpClick}
-              className="block w-full bg-primary text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              className="block w-full bg-primary text-white rounded-xl py-2 px-6 font-semibold text-center transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               aria-label="Sign up for KYM account"
               tabIndex={0}
             >
@@ -97,7 +97,7 @@ const WelcomePage = () => {
             <Link
               href="/auth/login"
               onClick={handleLoginClick}
-              className="block w-full bg-bg-primary/20 backdrop-blur-sm  text-white rounded-card-md py-2 px-6 font-semibold text-center transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              className="block w-full bg-bg-primary/20 backdrop-blur-sm  text-white rounded-xl py-2 px-6 font-semibold text-center transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               aria-label="Log in to your KYM account"
               tabIndex={0}
             >

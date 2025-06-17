@@ -28,7 +28,7 @@ const MessageDetailPage: React.FC = () => {
 
   if (!message) {
     return (
-      <div className="min-h-screen bg-bg-primary">
+      <div className="min-h-screen bg-bg-secondary">
         <div className="container mx-auto px-4 pt-10 max-w-md">
           <div className="flex items-center mb-6">
             <BackButton />
@@ -47,7 +47,7 @@ const MessageDetailPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-secondary">
       <div className="container mx-auto px-4 pt-4 pb-4 max-w-md">
         {/* Header with Back Button, Avatar and Title */}
         <div className="flex items-center gap-3 mb-4">

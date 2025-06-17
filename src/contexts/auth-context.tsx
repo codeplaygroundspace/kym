@@ -72,6 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (session?.user) {
         await fetchUserProfile(session.user);
       } else {
+        // User signed out or session expired
         setAuthState({
           user: null,
           profile: null,
@@ -182,6 +183,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
 
+      // The auth state will be updated by the onAuthStateChange listener
+      // but we can also set it immediately for faster UI response
       setAuthState({
         user: null,
         profile: null,
@@ -194,6 +197,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         ...prev,
         error: error instanceof Error ? error.message : "Logout failed",
       }));
+      throw error; // Re-throw to let the UI handle the error
     }
   };
 

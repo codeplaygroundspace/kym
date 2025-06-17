@@ -41,7 +41,7 @@ export default function Navbar() {
   }
 
   return (
-    <aside className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-100 dark:bg-gray-900/80 dark:border-gray-700 z-50">
+    <aside className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-200 dark:bg-gray-900/80 dark:border-gray-700 z-50">
       <div className="max-w-md mx-auto">
         <nav
           className="flex flex-row items-center justify-around px-4 py-2"

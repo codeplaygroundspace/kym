@@ -55,7 +55,6 @@ The system includes predefined event types for better TypeScript support:
 - `message_sent` - Message sending
 - `message_received` - Message receiving
 - `profile_updated` - Profile changes
-- `wisdom_viewed` - Wisdom content access
 - `timeline_viewed` - Timeline page access
 - `practitioner_dashboard_viewed` - Practitioner dashboard access
 - `patient_dashboard_viewed` - Patient dashboard access

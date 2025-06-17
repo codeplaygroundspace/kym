@@ -9,7 +9,7 @@ const HowItWorksPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-secondary">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-4 py-4">
         <div className="flex items-center gap-3">
@@ -35,7 +35,7 @@ const HowItWorksPage = () => {
 
         {/* Features */}
         <div className="space-y-6">
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-primary font-bold text-lg">1</span>
@@ -52,7 +52,7 @@ const HowItWorksPage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-primary font-bold text-lg">2</span>
@@ -70,7 +70,7 @@ const HowItWorksPage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-card-lg p-6 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-primary font-bold text-lg">3</span>
@@ -89,7 +89,7 @@ const HowItWorksPage = () => {
         </div>
 
         {/* Privacy Section */}
-        <div className="bg-purple-50 rounded-card-lg p-6">
+        <div className="bg-purple-50 rounded-2xl p-6">
           <h3 className="text-lg font-semibold text-text-primary mb-3">
             Your privacy is our priority
           </h3>
@@ -113,13 +113,13 @@ const HowItWorksPage = () => {
           <div className="space-y-3">
             <Link
               href="/sign-up"
-              className="block w-full bg-primary text-white rounded-card-lg py-4 px-6 font-semibold text-center transition-all shadow-lg hover:bg-primary/90"
+              className="block w-full bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-center transition-all shadow-lg hover:bg-primary/90"
             >
               Get started
             </Link>
             <Link
               href="/welcome"
-              className="block w-full bg-gray-100 text-text-primary rounded-card-lg py-4 px-6 font-medium text-center transition-all hover:bg-gray-200"
+              className="block w-full bg-gray-100 text-text-primary rounded-2xl py-4 px-6 font-medium text-center transition-all hover:bg-gray-200"
             >
               Back to welcome
             </Link>

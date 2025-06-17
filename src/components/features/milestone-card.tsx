@@ -6,7 +6,7 @@ const MilestoneCard = ({
   emoji,
 }: Omit<Milestone, "weekReached">) => {
   return (
-    <div className="bg-gradient-primary text-text-primary p-6 rounded-card-lg mb-14 relative overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+    <div className="bg-gradient-primary text-text-primary p-6 rounded-2xl mb-14 relative overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
       <div className="relative z-10">
         <div className="text-4xl mb-4" role="img" aria-label="Celebration">
           {emoji}

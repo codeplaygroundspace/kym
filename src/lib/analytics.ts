@@ -10,7 +10,6 @@ export type AnalyticsEvent =
   | "message_sent"
   | "message_received"
   | "profile_updated"
-  | "wisdom_viewed"
   | "timeline_viewed"
   | "practitioner_dashboard_viewed"
   | "patient_dashboard_viewed"

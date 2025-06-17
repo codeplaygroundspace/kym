@@ -4,25 +4,18 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Core Colors */
+  /* Core */
   --primary: #6b6aff;
   --primary-foreground: #ffffff;
 
-  /* Background Colors */
+  /* Background light */
   --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
+  --bg-secondary: #fafafa;
 
-  /* Text Colors */
+  /* Text light */
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
-
-  /* Border Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
 
   /* Gradients */
   --gradient-purple: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
@@ -97,30 +90,4 @@ body {
 /* Gradient Utilities */
 .bg-gradient-purple {
   background: var(--gradient-purple);
-}
-
-/* Border Radius Utilities */
-.rounded-card-sm {
-  border-radius: var(--radius-sm);
-}
-
-.rounded-card-md {
-  border-radius: var(--radius-md);
-}
-
-.rounded-card-lg {
-  border-radius: var(--radius-lg);
-}
-
-.rounded-card-xl {
-  border-radius: var(--radius-xl);
-}
-
-.rounded-card-2xl {
-  border-radius: var(--radius-2xl);
-}
-
-.rounded-t-card-2xl {
-  border-top-left-radius: var(--radius-2xl);
-  border-top-right-radius: var(--radius-2xl);
 }

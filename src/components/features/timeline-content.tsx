@@ -20,7 +20,7 @@ const TimelineContent = ({
 }: TimelineContentProps) => {
   if (!isAuthenticated) {
     return (
-      <div className="bg-bg-primary rounded-card-lg p-8 text-center">
+      <div className="bg-bg-primary rounded-2xl p-8 text-center">
         <p className="text-text-secondary">
           Please log in to view your timeline
         </p>
@@ -30,7 +30,7 @@ const TimelineContent = ({
 
   if (isLoading) {
     return (
-      <div className="bg-bg-primary rounded-card-lg p-8 text-center">
+      <div className="bg-bg-primary rounded-2xl p-8 text-center">
         <p className="text-text-secondary">Loading your timeline...</p>
       </div>
     );
@@ -38,7 +38,7 @@ const TimelineContent = ({
 
   if (error) {
     return (
-      <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-card-lg p-6 text-center">
+      <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl p-6 text-center">
         <p className="text-red-700 dark:text-red-300">{error}</p>
       </div>
     );
@@ -46,14 +46,14 @@ const TimelineContent = ({
 
   if (timelineEntries.length === 0) {
     return (
-      <div className="bg-bg-primary rounded-card-lg p-8 text-center">
+      <div className="bg-bg-primary rounded-2xl p-8 text-center">
         <p className="text-text-secondary mb-4">No entries yet! 🌱</p>
         <p className="text-sm text-text-muted mb-6">
           Start tracking your daily mood to build your timeline.
         </p>
         <Link
           href="/patient"
-          className="inline-block bg-primary text-white px-6 py-2 rounded-card-md font-medium transition-colors hover:bg-primary/90"
+          className="inline-block bg-primary text-white px-6 py-2 rounded-xl font-medium transition-colors hover:bg-primary/90"
         >
           Track Your Mood
         </Link>
@@ -82,7 +82,7 @@ const TimelineContent = ({
       />
 
       {/* Stats */}
-      <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-card-lg p-6">
+      <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
         <h3 className="text-lg font-semibold text-text-primary mb-4">
           Your Progress
         </h3>

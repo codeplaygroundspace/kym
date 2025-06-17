@@ -20,7 +20,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message }) => {
 
   return (
     <div
-      className="bg-bg-primary rounded-card-lg border border-gray-100 dark:border-gray-800 overflow-hidden cursor-pointer hover:shadow-md hover:border-gray-200 dark:hover:border-gray-700 transition-all duration-200 active:scale-[0.98]"
+      className="bg-bg-primary rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden cursor-pointer hover:shadow-md hover:border-gray-200 dark:hover:border-gray-700 transition-all duration-200 active:scale-[0.98]"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
