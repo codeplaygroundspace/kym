@@ -1,8 +1,15 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
+import { useRouter } from "next/navigation";
 import { AuthState } from "@/types/auth";
-import { supabase } from "@/lib/supabase";
+import { createBrowserClient } from "@supabase/ssr";
 import { User } from "@supabase/supabase-js";
 import { generateUsername } from "@/lib/username-generator";
 
@@ -19,12 +26,53 @@ interface AuthContextType extends AuthState {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const [authState, setAuthState] = useState<AuthState>({
     user: null,
     profile: null,
     isLoading: true,
     error: null,
   });
+
+  // Create Supabase client using the modern SSR client
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
+  const fetchUserProfile = useCallback(
+    async (user: User) => {
+      try {
+        const { data: profile, error } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .single();
+
+        if (error) {
+          console.error("Profile fetch error:", error);
+          throw error;
+        }
+
+        setAuthState({
+          user,
+          profile,
+          isLoading: false,
+          error: null,
+        });
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        setAuthState({
+          user,
+          profile: null,
+          isLoading: false,
+          error:
+            error instanceof Error ? error.message : "Failed to fetch profile",
+        });
+      }
+    },
+    [supabase]
+  );
 
   useEffect(() => {
     // Get initial session
@@ -69,6 +117,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log("Auth state change:", event, session?.user?.id);
+
       if (session?.user) {
         await fetchUserProfile(session.user);
       } else {
@@ -80,41 +130,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           error: null,
         });
       }
+
+      // Refresh the server state to sync with middleware
+      router.refresh();
     });
 
     return () => subscription.unsubscribe();
-  }, []);
-
-  const fetchUserProfile = async (user: User) => {
-    try {
-      const { data: profile, error } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", user.id)
-        .single();
-
-      if (error) {
-        console.error("Profile fetch error:", error);
-        throw error;
-      }
-
-      setAuthState({
-        user,
-        profile,
-        isLoading: false,
-        error: null,
-      });
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-      setAuthState({
-        user,
-        profile: null,
-        isLoading: false,
-        error:
-          error instanceof Error ? error.message : "Failed to fetch profile",
-      });
-    }
-  };
+  }, [router, supabase.auth, fetchUserProfile]);
 
   const login = async (email: string, password: string) => {
     try {
@@ -129,6 +151,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Login error:", error);
         throw error;
       }
+
+      // Refresh server state to sync with middleware
+      router.refresh();
 
       // Profile will be fetched automatically by the auth state change listener
     } catch (error) {
@@ -161,6 +186,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             role,
             display_name: displayName,
           },
+          emailRedirectTo: window.location.origin + "/welcome",
         },
       });
 
@@ -177,6 +203,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         // Return a special indicator that email verification is needed
         return { needsEmailVerification: true, email };
+      }
+
+      // If we have a session, refresh server state
+      if (data.session) {
+        router.refresh();
       }
 
       // Profile will be created automatically by the database trigger
@@ -204,6 +235,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading: false,
         error: null,
       });
+
+      // Refresh server state to sync with middleware
+      router.refresh();
     } catch (error) {
       console.error("Logout error:", error);
       setAuthState((prev) => ({
