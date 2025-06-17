@@ -5,12 +5,12 @@ import Link from "next/link";
 import TimelineContent from "@/components/features/timeline-content";
 import { useAuth } from "@/contexts/auth-context";
 import { useAnalytics } from "@/lib/hooks/use-analytics";
-import { useMoodEntries } from "@/lib/hooks/use-mood-entries";
+import { useMood } from "@/contexts/mood-context";
 
 const TimelinePage = () => {
   const { user } = useAuth();
   const { trackPage } = useAnalytics();
-  const { moodEntries, timelineEntries, isLoading, error } = useMoodEntries();
+  const { moodEntries, timelineEntries, isLoading, error } = useMood();
 
   useEffect(() => {
     trackPage("timeline", {

@@ -6,12 +6,12 @@ import PageHeader from "@/components/common/page-header";
 import JourneyContent from "@/components/features/journey-content";
 import { useAuth } from "@/contexts/auth-context";
 import { useAnalytics } from "@/lib/hooks/use-analytics";
-import { useMoodEntries } from "@/lib/hooks/use-mood-entries";
+import { useMood } from "@/contexts/mood-context";
 
 const JourneyPage = () => {
   const { user } = useAuth();
   const { trackPage } = useAnalytics();
-  const { timelineEntries, isLoading, error } = useMoodEntries({ limit: 10 });
+  const { timelineEntries, isLoading, error } = useMood();
 
   useEffect(() => {
     trackPage("journey", {

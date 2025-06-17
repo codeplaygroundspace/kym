@@ -31,8 +31,6 @@ export class MoodService {
       user_id: user.id,
     };
 
-    console.log("Creating mood entry with data:", entryData);
-
     const { data: moodEntry, error } = await supabase
       .from("mood_entries")
       .insert([entryData])
