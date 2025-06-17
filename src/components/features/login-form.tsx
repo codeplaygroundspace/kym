@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/auth-context";
+import { useLoginForm } from "@/lib/hooks/use-login-form";
+import LoginErrorDisplay from "./login-error-display";
 
 interface LoginFormProps {
   onSubmit?: (data: { email: string; password: string }) => void;
@@ -11,38 +12,17 @@ interface LoginFormProps {
 
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const { login, isLoading, error } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
-  // Email validation regex
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  // Check if form is valid
-  const isFormValid =
-    email.trim() !== "" && isValidEmail(email) && password.trim() !== "";
-
-  // Check if error indicates account not found
-  const isAccountNotFoundError =
-    error &&
-    (error.includes("User not found") ||
-      error.includes("No user found") ||
-      error.includes("Invalid login credentials"));
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const {
+    email,
+    password,
+    showPassword,
+    isFormValid,
+    handleEmailChange,
+    handlePasswordChange,
+    handleTogglePassword,
+    isValidEmail,
+  } = useLoginForm();
 
   const handleSubmit = async () => {
     if (isFormValid) {
@@ -56,7 +36,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
     }
   };
 
-  const handleSignUpClick = () => {
+  const handleGoToSignUp = () => {
     window.location.href = "/auth/signup";
   };
 
@@ -78,49 +58,11 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
       <CardContent className="space-y-6">
         {/* Error Display */}
         {error && (
-          <div
-            className={`border rounded-lg p-4 ${
-              isAccountNotFoundError
-                ? "bg-blue-50 border-blue-200"
-                : "bg-red-50 border-red-200"
-            }`}
-          >
-            <div className="flex items-start space-x-3">
-              <div className="flex-1">
-                <p
-                  className={`text-sm font-medium ${
-                    isAccountNotFoundError ? "text-blue-800" : "text-red-600"
-                  }`}
-                >
-                  {isAccountNotFoundError
-                    ? "Account Not Found"
-                    : "Login Failed"}
-                </p>
-                <p
-                  className={`text-sm mt-1 ${
-                    isAccountNotFoundError ? "text-blue-700" : "text-red-600"
-                  }`}
-                >
-                  {isAccountNotFoundError
-                    ? `No account found with ${email}. Would you like to create one?`
-                    : "Please check your email and password and try again."}
-                </p>
-                {isAccountNotFoundError && (
-                  <div className="mt-3">
-                    <button
-                      onClick={handleSignUpClick}
-                      onKeyDown={(e) => handleKeyDown(e, handleSignUpClick)}
-                      className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                      tabIndex={0}
-                      aria-label="Create new account"
-                    >
-                      Create Account
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+          <LoginErrorDisplay
+            error={error}
+            email={email}
+            onGoToSignUp={handleGoToSignUp}
+          />
         )}
 
         {/* Email Input */}
@@ -195,8 +137,8 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
           <p className="text-sm text-text-secondary">
             {`Don't have an account? `}
             <button
-              onClick={handleSignUpClick}
-              onKeyDown={(e) => handleKeyDown(e, handleSignUpClick)}
+              onClick={handleGoToSignUp}
+              onKeyDown={(e) => handleKeyDown(e, handleGoToSignUp)}
               className="text-text-primary underline hover:text-primary transition-colors cursor-pointer font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
               tabIndex={0}
               aria-label="Create new account"

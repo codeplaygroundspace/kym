@@ -8,6 +8,7 @@ alwaysApply: true
 - You must use Tailwind 4 https://tailwindcss.com
 - You must use Supabase as the database and authentication.
 - You must use ESLint best practise.
+- Do not change the content of the app, this is done by a copywriter.
 - You must use shadcn whenever possible to mantain consistency.
 - You must use Typescript. Use any as the last resource, in general, try go avoid using any whenever is possible.
 - You must follow Components naming convention. Example: nav-bar.tsx

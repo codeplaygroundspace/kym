@@ -32,18 +32,8 @@ const LoginPage = () => {
     // Navigation will be handled by the useEffect above
   };
 
-  // Show loading state while checking authentication
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-purple flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white">Checking authentication...</p>
-        </div>
-      </div>
-    );
-  }
-
+  // Render the form immediately - no loading state for public routes
+  // If user is authenticated, the useEffect will handle redirection
   return <LoginForm onSubmit={handleLogIn} />;
 };
 
