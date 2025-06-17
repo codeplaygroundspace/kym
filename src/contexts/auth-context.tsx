@@ -12,7 +12,7 @@ interface AuthContextType extends AuthState {
     email: string,
     password: string,
     role: "patient" | "practitioner"
-  ) => Promise<void>;
+  ) => Promise<{ needsEmailVerification?: boolean; email?: string } | void>;
   logout: () => Promise<void>;
 }
 
@@ -153,7 +153,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Generate a privacy-friendly display name
       const displayName = generateUsername();
 
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -166,8 +166,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (error) throw error;
 
+      // Check if email verification is required
+      if (data.user && !data.session) {
+        // Email verification required
+        setAuthState((prev) => ({
+          ...prev,
+          isLoading: false,
+          error: null,
+        }));
+
+        // Return a special indicator that email verification is needed
+        return { needsEmailVerification: true, email };
+      }
+
       // Profile will be created automatically by the database trigger
-      // and fetched by the auth state change listener
+      // and fetched by the auth state change listener if session exists
     } catch (error) {
       setAuthState((prev) => ({
         ...prev,

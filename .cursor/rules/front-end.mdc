@@ -3,7 +3,8 @@ description:
 globs: 
 alwaysApply: true
 ---
-- Always build for light and dark theme
+- Always build for light and dark theme.
+- This is an MVP, do not code overkill solutions.
 - You must use Tailwind 4 https://tailwindcss.com
 - You must use Supabase as the database and authentication.
 - You must use ESLint best practise.
