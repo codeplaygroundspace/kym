@@ -8,15 +8,13 @@ import BackButton from "@/components/common/back-button";
 import { useAuth } from "@/contexts/auth-context";
 import { generateUsername, generateInitials } from "@/lib/username-generator";
 import {
-  Settings,
-  Bell,
   Shield,
   CircleHelp,
   LogOut,
   Edit3,
   Mail,
   Calendar,
-  MapPin,
+  Trash2,
 } from "lucide-react";
 
 const ProfilePage = () => {
@@ -62,7 +60,6 @@ const ProfilePage = () => {
           year: "numeric",
         })
       : "March 2024",
-    location: "London, UK", // TODO: Add location field to profile
   });
 
   const handleBackClick = () => {
@@ -92,18 +89,6 @@ const ProfilePage = () => {
 
   const profileMenuItems = [
     {
-      icon: Settings,
-      label: "Account Settings",
-      href: "/patient/profile/settings",
-      description: "Manage your account preferences",
-    },
-    {
-      icon: Bell,
-      label: "Notifications",
-      href: "/patient/profile/notifications",
-      description: "Control your notification settings",
-    },
-    {
       icon: Shield,
       label: "Privacy & Security",
       href: "/patient/profile/privacy",
@@ -114,6 +99,12 @@ const ProfilePage = () => {
       label: "Help & Support",
       href: "/patient/profile/help",
       description: "Get help and contact support",
+    },
+    {
+      icon: Trash2,
+      label: "Delete Account",
+      href: "/patient/profile/delete-account",
+      description: "Permanently delete your account and data",
     },
   ];
 
@@ -211,29 +202,7 @@ const ProfilePage = () => {
                 )}
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-text-muted" />
-              <div className="flex-1">
-                <div className="text-sm text-text-muted">Location</div>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={userProfile.location}
-                    onChange={(e) =>
-                      setUserProfile({
-                        ...userProfile,
-                        location: e.target.value,
-                      })
-                    }
-                    className="text-text-primary bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-primary w-full"
-                  />
-                ) : (
-                  <div className="text-text-primary">
-                    {userProfile.location}
-                  </div>
-                )}
-              </div>
-            </div>
+
             <div className="flex items-center gap-3">
               <Calendar className="w-5 h-5 text-text-muted" />
               <div className="flex-1">
